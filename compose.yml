@@ -1,0 +1,29 @@
+services:
+  workspace:
+    image: programming-lab/workspace:local
+    build:
+      context: .
+      dockerfile: docker/workspace/Dockerfile
+      args:
+        USERNAME: ${DEV_USERNAME:-dev}
+        USER_UID: ${HOST_UID:-1000}
+        USER_GID: ${HOST_GID:-1000}
+    working_dir: /workspace
+    tty: true
+    stdin_open: true
+    environment:
+      TERM: xterm-256color
+      COLORTERM: truecolor
+      SSH_AUTH_SOCK: /ssh-agent
+      GIT_USER_NAME: ${GIT_USER_NAME:-}
+      GIT_USER_EMAIL: ${GIT_USER_EMAIL:-}
+    volumes:
+      - type: bind
+        source: .
+        target: /workspace
+      # A chave privada permanece no WSL host. O container recebe somente o socket do ssh-agent.
+      - type: bind
+        source: ${SSH_AUTH_SOCK:?Inicie o ssh-agent no WSL e execute ssh-add antes de subir o container}
+        target: /ssh-agent
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    command: ["zsh"]

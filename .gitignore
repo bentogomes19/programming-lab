@@ -1,0 +1,25 @@
+# PHP
+vendor/
+.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Java
+*.class
+target/
+
+# C / C++
+*.o
+*.out
+*.exe
+build/
+
+# IDE
+.idea/
+.vscode/
+
+# Ambiente
+.env

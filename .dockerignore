@@ -1,0 +1,14 @@
+.git
+.env
+.idea
+.vscode
+vendor
+.venv
+__pycache__
+target
+build
+cmake-build-*
+*.class
+*.o
+*.out
+*.exe
