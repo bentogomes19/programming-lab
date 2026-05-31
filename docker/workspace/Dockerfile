@@ -18,7 +18,7 @@ RUN apt-get update \
         zsh sudo locales tzdata \
         nano vim less man-db procps tree jq \
         unzip zip make \
-        php-cli php-mbstring php-xml php-curl php-zip php-intl php-bcmath composer \
+        php-cli php-mbstring php-xml php-curl php-zip php-intl php-bcmath php-xdebug composer \
         python3 python3-pip python3-venv \
         openjdk-21-jdk maven \
         build-essential gcc g++ gdb cmake \
@@ -53,6 +53,16 @@ RUN apt-get update \
 
 COPY --chmod=755 docker/workspace/setup-shell.sh /usr/local/bin/setup-shell.sh
 COPY docker/workspace/.zshrc /tmp/workspace.zshrc
+
+RUN { \
+        echo "xdebug.mode=debug"; \
+        echo "xdebug.start_with_request=yes"; \
+        echo "xdebug.client_host=host.docker.internal"; \
+        echo "xdebug.client_port=9003"; \
+        echo "xdebug.idekey=PHPSTORM"; \
+        echo "xdebug.log=/tmp/xdebug.log"; \
+        echo "xdebug.log_level=7"; \
+    } > /etc/php/8.3/cli/conf.d/99-xdebug.ini
 
 RUN /usr/local/bin/setup-shell.sh "${USERNAME}" \
     && install -o "${USERNAME}" -g "${USERNAME}" -m 0644 /tmp/workspace.zshrc "/home/${USERNAME}/.zshrc" \
