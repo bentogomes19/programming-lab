@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * 3. Faça um programa que receba dois números e mostre o menor.
+ */
+
 $numero1 = (float)(trim(readline("Numero 1: ")));
 $numero2 = (float)(trim(readline("Numero 2: ")));
 

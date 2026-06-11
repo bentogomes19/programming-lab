@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * 4. Faça um programa que receba três números e mostre o maio
+ */
+
 $numero1 = (float)(trim(readline("Numero 1: ")));
 $numero2 = (float)(trim(readline("Numero 2: ")));
 $numero3 = (float)(trim(readline("Numero 3: ")));
