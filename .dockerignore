@@ -2,7 +2,7 @@
 .env
 .idea
 .vscode
-vendor
+exercicios/fundamentos-programacao/vendor
 .venv
 __pycache__
 target
