@@ -1,19 +1,30 @@
 <?php
 
+/**
+ * 1. Faça um programa que preencha um vetor com seis elementos numéricos inteiros. Calcule e mostre:
+ * ■■ todos os números pares;
+ * ■■ a quantidade de números pares;
+ * ■■ todos os números ímpares;
+ * ■■ a quantidade de números ímpares.
+ */
 
-$vetor1 = [3, 5, 4, 2, 2, 5, 3, 2, 5, 9];
-$vetor2 = [7, 15, 20, 0, 18, 4, 55, 23, 8, 6];
+$vetor        = [2, 4, 5, 7, 8];
+$countPares   = 0;
+$countImpares = 0;
+$listaImpares = "";
+$listaPares   = "";
 
-$vetorResultante = [];
-
-$j = 0;
-for ($i = 0; $i <= 9; $i++) {
-    $vetorResultante[$j] = $vetor1[$i];
-    $j++;
-    $vetorResultante[$j] = $vetor2[$i];
-    $j++;
+foreach ($vetor as $numero) {
+    if ($numero % 2 === 0) {
+        $listaPares .= $numero . " ";
+        $countPares++;
+    } else {
+        $listaImpares .= $numero . " ";
+        $countImpares++;
+    }
 }
 
-for ($i = 0; $i < 20; $i++) {
-    echo $vetorResultante[$i] . ' | ';
-}
+echo "Pares: " . $listaPares . PHP_EOL;
+echo "Ímpares: " . $listaImpares . PHP_EOL;
+echo "Quantidade números pares: " . $countPares . PHP_EOL;
+echo "Quantidade números ímpares: " . $countImpares . PHP_EOL;
